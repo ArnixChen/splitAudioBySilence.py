@@ -149,7 +149,7 @@ if __name__ == '__main__':
 
     if (len(sys.argv) != 3):
         print("newSplitAudio -- Split audio into segments with mapping list");
-        print("syntax: newSplitAudio <mapping list> <audio file.WAV>\n")
+        print("syntax: splitAudio.py <mapping list> <audio file.WAV>\n")
     else:
         mapping_list_file = sys.argv[1]
         source_audio = sys.argv[2]
