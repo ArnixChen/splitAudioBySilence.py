@@ -153,7 +153,6 @@ if __name__ == '__main__':
     else:
         mapping_list_file = sys.argv[1]
         source_audio = sys.argv[2]
-        #split_audio("/home/arnix/works/Language_Test/Python/splitAudio/0a800-1000.WAV")
         split_audio(source_audio)
         file_remapping(mapping_list_file)
 
