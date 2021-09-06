@@ -6,4 +6,4 @@ Split audio file and rename splitted files with given file-mapping-list.
     splitAudio.py <audio-file.wav> [mapping-list]
   
 - **audio-file.wav** : Audio file in wave format.
-- **mapping-list** : A text file with filenames listed in it.
+- **mapping-list** : A text file with filenames line by line listed in it.
