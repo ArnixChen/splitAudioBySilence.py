@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# From https://stackoverflow.com/questions/29547218/
+# Reference from https://stackoverflow.com/questions/29547218/
 # remove-silence-at-the-beginning-and-at-the-end-of-wave-files-with-pydub
 from pydub import AudioSegment
 
@@ -42,7 +42,16 @@ def detect_audio_end(sound, offset, silence_threshold=-60.0):
 
 def split_audio(srcFile):
     import os
+    import glob
     import re
+
+    # Remove wave file except srcFile
+    audioFileList = glob.glob("./*.wav")
+    audioFileList.sort()
+    if srcFile in audioFileList:
+        audioFileList.remove(srcFile)
+    for item in audioFileList:
+      os.remove(item)
 
     fullPathFileName = srcFile
     print("splitAudio.py " + fullPathFileName)
@@ -142,10 +151,13 @@ def file_remapping(mapping_list_file):
 if __name__ == '__main__':
     import sys
 
-    if (len(sys.argv) != 3):
+    if (len(sys.argv) == 1):
         print("splitAudio.py -- Split audio into segments with mapping list")
-        print("syntax: splitAudio.py <audio-file.wav> <mapping-list>\n")
-    else:
+        print("syntax: splitAudio.py <audio-file.wav> [mapping-list]\n")
+    elif (len(sys.argv) == 2):
+        source_audio = sys.argv[1]
+        split_audio(source_audio)
+    elif (len(sys.argv) == 3):
         source_audio = sys.argv[1]
         mapping_list_file = sys.argv[2]
         split_audio(source_audio)
