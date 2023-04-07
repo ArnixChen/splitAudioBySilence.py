@@ -27,7 +27,7 @@ def get_info(filename, search_key=None):
   Get begin,end information of a splitted audio segment
   '''
   filename = os.path.basename(filename)
-  if filename == get_basename_without_extension(__file__) + '.cfg':
+  if filename == get_basename_without_extension(__file__) + '.conf':
     info_filename = filename
   else:
     info_filename = filename + '.info'
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     exit()
 
   #print(f"clear = {clear}")
-  config_file = get_basename_without_extension(__file__) + '.cfg'
+  config_file = get_basename_without_extension(__file__) + '.conf'
   config = {}
   if os.path.exists(config_file):
     config['minimal_silence_length'] = get_info(config_file, 'minimal_silence_length')
