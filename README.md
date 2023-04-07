@@ -35,3 +35,5 @@ Renaming files splitted from several audio files.
 ```bash
 splitAudioBySilence.py -s source_file1.wav source_file2.wav source_file3.wav -m mapping_table.txt
 ```
+## Priority of parameter source for minimal-silence-length, silence-threshold and noclear-old-files.
+audio_file.info > splitAudioBySilence.conf > command line options
