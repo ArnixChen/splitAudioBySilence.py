@@ -191,7 +191,7 @@ def mapping_generated_files(source_list, mapping_table):
       print(f"No file generated from {src_basename}.wav was found !")
       return
     
-    joined_files = glob.glob(f"{src_basename}.[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9].joined.wav")
+    joined_files = glob.glob(f"{src_basename}.[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9].joined*.wav")
     if len(joined_files) != 0:
       generated_files.extend(joined_files)
     generated_files.sort()
