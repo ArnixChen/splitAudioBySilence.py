@@ -182,6 +182,7 @@ def mapping_generated_files(source_list, mapping_table):
     if len(line) == 0:
       mapping_list.pop(i)
   
+  i=0 # Index for renamed files
   for src_filename in source_list:
     src_basename = get_basename_without_extension(src_filename)
     if not os.path.exists(src_basename + ".wav"):
@@ -203,7 +204,8 @@ def mapping_generated_files(source_list, mapping_table):
     
     for gen_file in generated_files:
       try:
-        new_name = subset.pop() + ".wav"
+        i = i + 1
+        new_name = str(i).zfill(4) + '.' + subset.pop() + '.wav'
         print(f"Rename {gen_file} to {new_name} !")
         os.rename(gen_file, new_name)
       except IndexError:
@@ -233,7 +235,7 @@ if __name__ == '__main__':
     config['minimal_silence_length'] = get_info(config_file, 'minimal_silence_length')
     config['silence_threshold'] = get_info(config_file, 'silence_threshold')
     config['noclear_old_files'] = get_info(config_file, 'noclear_old_files')
-    #print(f"config={config}")
+    print(f"config={config}")
     
   if args.mapping_table != None:
     if not os.path.exists(args.mapping_table):
@@ -272,8 +274,8 @@ if __name__ == '__main__':
           noclear = args.noclear
 
       if not os.path.exists(config_file):
-        print(f"minimal_silence_length={length} silence_threshold={threshold} noclear={noclear}")
         save_config(config_file, length, threshold, noclear)
         
+      print(f"minimal_silence_length={length} silence_threshold={threshold} noclear={noclear}")
       split_audio(file_path, length, threshold, noclear)
     
