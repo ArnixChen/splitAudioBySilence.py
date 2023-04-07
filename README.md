@@ -1,9 +1,37 @@
-# splitAudio.py
-Split audio file and rename splitted files with given file-mapping-list.
+# splitAudioBySilence.py
+Split audio into wave files based on silence detection.
 
-## Usage
+## Examples of audio spliting
+Split an audio file
+```bash
+# Supports .wav, .flac, .mp3
+splitAudioBySilence.py -s source_file.wav
+```
 
-    splitAudio.py <audio-file.wav> [mapping-list]
-  
-- **audio-file.wav** : Audio file in wave format.
-- **mapping-list** : A text file with filenames line by line listed in it.
+...or several audio files
+```bash
+# Source file name list seperated by space
+splitAudioBySilence.py -s source_file1.wav source_file2.wav source_file3.wav
+```
+
+Split a WAV file with silence threshold assigned.
+```bash
+# Assign silence threshold as -40db
+splitAudioBySilence.py -t -40 -s source_file.wav
+```
+
+Split a WAV file with silence threshold and minimal silence length assigned
+```bash
+# Assign silence threshold as -40db and minimal silence length as 80ms
+splitAudioBySilence.py -t -40 -l 80 -s source_file.wav
+```
+## Exapmle of renaming splitted files with mapping table
+Renaming files splitted from a audio file.
+```bash
+splitAudioBySilence.py -s source_file.wav -m mapping_table.txt
+```
+
+Renaming files splitted from several audio files.
+```bash
+splitAudioBySilence.py -s source_file1.wav source_file2.wav source_file3.wav -m mapping_table.txt
+```
