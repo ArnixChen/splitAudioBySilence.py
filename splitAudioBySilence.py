@@ -11,12 +11,19 @@ import glob
 import re
 
 def get_basename_without_extension(file_path):
-  """
+  '''
   Get file's basename without its extension.
-  """
+  ex.
+    result = get_basename_without_extension('/home/test/bin/test.py')
+    print(result)
+    Out[]: test
+  '''
   return os.path.splitext(os.path.basename(file_path))[0]
   
 def is_type(variable, atype):
+  '''
+  Check if a variable is type of atype
+  '''
   if str(type(variable)) == f"<class '{atype}'>":
     return True
   else:
